@@ -1,9 +1,11 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import videos from '/data/videos.json'; // Assuming videos.json is an array of video objects
 import { notFound } from 'next/navigation';
+import RelatedVideoCard from './RelatedVideoCard';
+import { getVideos } from '@/utils/getVideoData';
 
-function SingleVideoPage({ id }) {
+export default async function SingleVideoPage({ id, lang }) {
+  const videos = await getVideos();
+
   const video = videos?.find((video) => video.videoId === id);
 
   if (!video) {
@@ -55,15 +57,15 @@ function SingleVideoPage({ id }) {
                   xmlns='http://www.w3.org/2000/svg'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
                     d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'
                   ></path>
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
                     d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
                   ></path>
                 </svg>
@@ -98,35 +100,8 @@ function SingleVideoPage({ id }) {
       </div>
       <div className='lg:w-1/4'>
         <h2 className='text-xl font-semibold mb-4'>You may like</h2>
-        <div className='space-y-4'>
-          {randomVideos.map((randomvideo, index) => (
-            <Link
-              href={`/videos/${randomvideo.videoId}`}
-              key={index}
-              className='flex items-start space-x-4'
-            >
-              <Image
-                src={randomvideo.thumbnail}
-                alt='Fallout Shelter PC Thumbnail'
-                className='w-30 h-20 rounded object-cover'
-                width={130}
-                height={80}
-              />
-              {/* <Link href={`/videos/${randomvideo.videoId}`}> */}
-
-              <div>
-                <h3 className='font-semibold'>{randomvideo.title}</h3>
-                <p className='text-sm text-gray-400'>
-                  {randomvideo.channelTitle}
-                </p>
-                <p className='text-sm text-gray-400'>26,389M</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <RelatedVideoCard randomVideos={randomVideos} lang={lang} />
       </div>
     </main>
   );
 }
-
-export default SingleVideoPage;

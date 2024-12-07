@@ -19,11 +19,11 @@ export default function HeroSection() {
           <iframe
             src='https://www.youtube.com/embed/0VtVPk7Zv9c'
             title='YouTube video player'
-            frameborder='0'
+            frameBorder='0'
             className='w-full aspect-video'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            referrerpolicy='strict-origin-when-cross-origin'
-            allowfullscreen
+            referrerPolicy='strict-origin-when-cross-origin'
+            allowFullScreen
           ></iframe>
 
           <div className='absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-between p-4'>

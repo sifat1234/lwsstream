@@ -1,12 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import LanguageSwitcher from './LanguageSwitcher';
-import { notFound } from 'next/navigation';
 
-export default function Header({ dictionary }) {
-  if (!dictionary) {
-    notFound();
-  }
+export default function Header() {
   return (
     <header className='flex justify-between items-center mb-8'>
       <div className='flex items-center space-x-8'>
@@ -21,13 +16,13 @@ export default function Header({ dictionary }) {
         </Link>
         <nav className=' hidden md:flex space-x-6'>
           <Link href='/steam' className='text-color-purple font-semibold'>
-            {dictionary?.topStreaming || 'TopStreaming'}
+            TOPSTREAMING
           </Link>
           <Link href='/games' className='text-gray-400 hover:text-white'>
-            {dictionary?.games || 'Games'}
+            GAMES
           </Link>
           <Link href='/teams' className='text-gray-400 hover:text-white'>
-            {dictionary?.teams || 'Teams'}
+            TEAMS
           </Link>
         </nav>
       </div>
@@ -35,7 +30,7 @@ export default function Header({ dictionary }) {
         <div className='relative'>
           <input
             type='text'
-            placeholder={dictionary?.search || 'Search'}
+            placeholder='Search'
             className='bg-color-gray rounded-full py-2 px-4 w-64 focus:outline-none focus:ring-2 focus:ring-color-purple'
           />
           <svg
@@ -46,9 +41,9 @@ export default function Header({ dictionary }) {
             xmlns='http://www.w3.org/2000/svg'
           >
             <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
               d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
             ></path>
           </svg>
@@ -60,7 +55,6 @@ export default function Header({ dictionary }) {
           width={512}
           height={512}
         />
-        <LanguageSwitcher />
       </div>
     </header>
   );
