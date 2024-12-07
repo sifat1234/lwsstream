@@ -53,8 +53,6 @@ export async function DELETE(request, { params }) {
 
   const videoIndex = videos.findIndex((video) => video.videoId === videoId);
 
-  console.log(videoIndex);
-
   if (videoIndex === -1) {
     // Handle the case where the video is not found
     return new NextResponse('Video not found', { status: 404 });

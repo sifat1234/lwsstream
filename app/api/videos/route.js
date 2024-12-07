@@ -4,7 +4,6 @@ import videos from '/data/videos.json';
 
 export async function GET() {
   const data = await getVideos();
-  console.log(data);
   return NextResponse.json(data);
 }
 

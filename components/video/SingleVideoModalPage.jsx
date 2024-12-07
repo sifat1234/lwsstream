@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import videos from '/data/videos.json'; // Assuming videos.json is an array of video objects
+import videos from '/data/videos.json';
 
 function Single({ id, dictionary }) {
   const video = videos?.find((video) => video.videoId === id);
