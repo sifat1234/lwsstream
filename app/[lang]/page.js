@@ -1,10 +1,14 @@
 import HeroSection from '@/components/HeroSection';
 import VideoSection from '@/components/video/VideoSection';
+import { getDictionary } from './disctionaries';
 
-export default function Home() {
+export default async function Home({ params }) {
+  const { lang } = params;
+
+  const dictionary = await getDictionary(lang);
   return (
     <>
-      <HeroSection />
+      <HeroSection dictionary={dictionary} />
       <VideoSection />
     </>
   );

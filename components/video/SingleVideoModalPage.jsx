@@ -1,22 +1,18 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import videos from '/data/videos.json'; // Assuming videos.json is an array of video objects
 
-function Single({ id }) {
+function Single({ id, dictionary }) {
   const video = videos?.find((video) => video.videoId === id);
 
   return (
     <div className='lg:w-3/4'>
       <div className='relative'>
-        <iframe
-          src='https://www.youtube.com/embed/hecODa5ZgZM'
-          title='YouTube video player'
-          frameborder='0'
-          className='w-full aspect-video h-[500px]'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          referrerpolicy='strict-origin-when-cross-origin'
-          allowfullscreen
-        ></iframe>
+        <Image
+          src={video.thumbnail}
+          alt='video.thumbnail'
+          width={700}
+          height={500}
+        />
 
         <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4'>
           <div className='flex items-center space-x-4'>
@@ -43,11 +39,11 @@ function Single({ id }) {
               </svg>
             </button>
             <div className='bg-color-purple text-white px-2 py-1 rounded text-sm'>
-              LIVE
+              {dictionary.live}
             </div>
             <span className='text-sm'>46:02</span>
             <button className='bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm'>
-              Donate
+              {dictionary.Donate}
             </button>
           </div>
         </div>
@@ -66,7 +62,7 @@ function Single({ id }) {
           <p className='font-semibold'>{video.channelTitle}</p>
         </div>
         <button className='bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm ml-auto'>
-          Subscribe
+          {dictionary.subscribe}
         </button>
       </div>
     </div>

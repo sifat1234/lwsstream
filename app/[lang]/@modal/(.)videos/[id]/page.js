@@ -1,17 +1,16 @@
 import Modal from '@/components/Modal';
-import SingleVideoPage from '@/components/video/SingleVideoPage';
-import Single from '@/components/video/Single';
+import SingleVideoModalPage from '@/components/video/SingleVideoModalPage';
+import { getDictionary } from '@/app/[lang]/disctionaries';
 
-function VideoPage({ params }) {
-  const { id } = params;
+export default async function VideoPage({ params }) {
+  const { id, lang } = params;
+  const dictionary = await getDictionary(lang);
 
   return (
     <>
       <Modal>
-        <Single id={id} />
+        <SingleVideoModalPage id={id} dictionary={dictionary} />
       </Modal>
     </>
   );
 }
-
-export default VideoPage;

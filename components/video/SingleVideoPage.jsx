@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import RelatedVideoCard from './RelatedVideoCard';
 import { getVideos } from '@/utils/getVideoData';
 
-export default async function SingleVideoPage({ id, lang }) {
+export default async function SingleVideoPage({ id, lang, dictionary }) {
   const videos = await getVideos();
 
   const video = videos?.find((video) => video.videoId === id);
@@ -36,15 +36,12 @@ export default async function SingleVideoPage({ id, lang }) {
     <main className='flex flex-col lg:flex-row gap-6'>
       <div className='lg:w-3/4'>
         <div className='relative'>
-          <iframe
-            src='https://www.youtube.com/embed/hecODa5ZgZM'
-            title='YouTube video player'
-            frameborder='0'
-            className='w-full aspect-video h-[500px]'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            referrerpolicy='strict-origin-when-cross-origin'
-            allowfullscreen
-          ></iframe>
+          <Image
+            src={video.thumbnail}
+            alt='video.thumbnail'
+            width={1100}
+            height={500}
+          />
 
           <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4'>
             <div className='flex items-center space-x-4'>
@@ -71,11 +68,11 @@ export default async function SingleVideoPage({ id, lang }) {
                 </svg>
               </button>
               <div className='bg-color-purple text-white px-2 py-1 rounded text-sm'>
-                LIVE
+                {dictionary.live}
               </div>
               <span className='text-sm'>46:02</span>
               <button className='bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm'>
-                Donate
+                {dictionary.Donate}
               </button>
             </div>
           </div>
@@ -94,12 +91,12 @@ export default async function SingleVideoPage({ id, lang }) {
             <p className='font-semibold'>{video.channelTitle}</p>
           </div>
           <button className='bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm ml-auto'>
-            Subscribe
+            {dictionary.subscribe}
           </button>
         </div>
       </div>
       <div className='lg:w-1/4'>
-        <h2 className='text-xl font-semibold mb-4'>You may like</h2>
+        <h2 className='text-xl font-semibold mb-4'>{dictionary.Youmaylike}</h2>
         <RelatedVideoCard randomVideos={randomVideos} lang={lang} />
       </div>
     </main>

@@ -1,7 +1,16 @@
 {
   "search": "Search",
-
   "teams": "TEAMS",
   "games": "GAMES",
-  "topStreaming": "TOP STREAMING"
+  "topStreaming": "TOP STREAMING",
+
+  "play": "PLAY",
+  "compete": "COMPETE",
+  "followpopular": "FOLLOW POPULAR",
+  "streamer": "STREAMERS",
+  "subscribe": "Subscribe",
+  "live": "Live",
+  "Donate": "Donate",
+  "headline": "The best streamers gather here to have a good time, be among us, join us!",
+  "Youmaylike": "You may like"
 }

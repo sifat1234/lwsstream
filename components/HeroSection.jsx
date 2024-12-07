@@ -1,18 +1,15 @@
-export default function HeroSection() {
+export default function HeroSection({ dictionary }) {
   return (
     <main className='grid grid-cols-1 lg:grid-cols-4 gap-8 items-center'>
       <div className='lg:col-span-2'>
         <h1 className='text-4xl md:text-6xl font-bold mb-4 leading-tight'>
-          PLAY, COMPETE,
+          {dictionary.play}, {dictionary.compete},
           <br />
-          FOLLOW POPULAR
+          {dictionary.followpopular}
           <br />
-          STREAMERS
+          {dictionary.streamer}
         </h1>
-        <p className='text-gray-400 mb-8'>
-          The best streamers gather here to have a good time, be among us, join
-          us!
-        </p>
+        <p className='text-gray-400 mb-8'>{dictionary.headline}</p>
       </div>
       <div className='lg:col-span-2'>
         <div className='relative rounded-lg overflow-hidden'>
