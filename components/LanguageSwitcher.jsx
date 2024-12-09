@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { redirectToPath } from '@/app/[lang]/server-actions';
 
 import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -28,18 +29,25 @@ const LanguageSwitcher = () => {
   );
   const [showManu, setShowManu] = useState(false);
 
-  const handleLanguageChange = (lang) => {
-    /* let path = pathname;
-    if (pathname.includes(selectedLanguage.code)) {
-      path = pathname.replace(selectedLanguage.code, lang);
-    } */
+  const handleLanguageChange = async (lang) => {
+    const pathSegments = pathname.split('/').filter(Boolean); // Split and remove empty segments
+
+    // Check if the first segment matches any language code
+    if (languages.some((l) => l.code === pathSegments[0])) {
+      pathSegments[0] = lang; // Replace the language code
+    } else {
+      pathSegments.unshift(lang); // Add the language code as the first segment
+    }
+
+    const updatedPath = `/${pathSegments.join('/')}`; // Reconstruct the path
+
     setSelectedLanguage({
       ...selectedLanguage,
       code: lang,
       language: lang === 'en' ? 'English' : 'Bangla',
     });
     setShowManu(false);
-    router.push(`/${lang}`);
+    await redirectToPath(updatedPath);
   };
 
   return (

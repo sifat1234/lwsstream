@@ -1,7 +1,7 @@
 import VideoList from './VideoList';
 import Link from 'next/link';
 
-function VideoSection() {
+function VideoSection({ lang }) {
   return (
     <section className='mt-12'>
       <div className='flex justify-between items-center mb-4'>
@@ -14,7 +14,7 @@ function VideoSection() {
         </Link>
       </div>
 
-      <VideoList />
+      <VideoList lang={lang} />
     </section>
   );
 }

@@ -9,7 +9,7 @@ export default async function Home({ params }) {
   return (
     <>
       <HeroSection dictionary={dictionary} />
-      <VideoSection />
+      <VideoSection lang={lang} />
     </>
   );
 }

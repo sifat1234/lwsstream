@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-function VideoCard({ video }) {
+function VideoCard({ video, lang }) {
   return (
     <div className='rounded-lg overflow-hidden bg-color-gray'>
-      <Link href={`/videos/${video.videoId}`}>
+      <Link href={`/${lang}/videos/${video.videoId}`}>
         <Image
           src={video.thumbnail}
           alt={video.channelTitle}
